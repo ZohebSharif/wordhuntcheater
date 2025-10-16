@@ -18,12 +18,17 @@ const Index = () => {
   useEffect(() => {
     const hasValidLetters = grid.some(row => row.some(cell => cell.trim() !== ""));
     
-    if (hasValidLetters) {
-      const foundWords = findWords(grid);
-      setWords(foundWords);
-    } else {
-      setWords([]);
-    }
+    // Debounce the word search to avoid lag while typing
+    const timer = setTimeout(() => {
+      if (hasValidLetters) {
+        const foundWords = findWords(grid);
+        setWords(foundWords);
+      } else {
+        setWords([]);
+      }
+    }, 300); // Wait 300ms after user stops typing
+
+    return () => clearTimeout(timer);
   }, [grid]);
 
   return (
