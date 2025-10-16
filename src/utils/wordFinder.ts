@@ -11,7 +11,7 @@ const loadWords = async () => {
           .map(word => word.trim().toUpperCase())
           .filter(word => word.length >= 3 && word.length <= 8)
     );
-    console.log(`Loaded ${VALID_WORDS.size} words`);
+    console.log(`Loaded ${VALID_WORDS.size} words from dictionary`);
   } catch (error) {
     console.error('Error loading words:', error);
   }
