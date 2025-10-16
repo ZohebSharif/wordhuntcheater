@@ -31,6 +31,8 @@ __pycache__/
 *.txt
 !requirements.txt
 !wordlist.txt
+!listofwords.txt
+!public/listofwords.txt
 
 # IDE
 .vscode/
