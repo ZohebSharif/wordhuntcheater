@@ -7,7 +7,6 @@ const loadWords = async () => {
     // Get the base path - works for both local and GitHub Pages
     const basePath = window.location.pathname.replace(/\/$/, '');
     const wordListUrl = `${window.location.origin}${basePath}/listofwords.txt`;
-    console.log('Attempting to load words from:', wordListUrl);
     
     const response = await fetch(wordListUrl);
     if (!response.ok) {
@@ -19,7 +18,6 @@ const loadWords = async () => {
           .map(word => word.trim().toUpperCase())
           .filter(word => word.length >= 3 && word.length <= 8)
     );
-    console.log(`Successfully loaded ${VALID_WORDS.size} words`);
   } catch (error) {
     console.error('Error loading words:', error);
   }
