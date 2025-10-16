@@ -32,7 +32,7 @@ const Index = () => {
         {/* Header */}
         <header className="text-center space-y-3 fade-in">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
-            Word Hunt Pro
+            Word Hunt Cheater
           </h1>
           <p className="text-base text-muted-foreground font-medium">
             Find all valid words on your 4×4 board
