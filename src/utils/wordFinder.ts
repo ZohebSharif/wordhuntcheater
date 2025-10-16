@@ -4,14 +4,13 @@ let VALID_WORDS: Set<string> = new Set();
 // Load words from file
 const loadWords = async () => {
   try {
-    const response = await fetch('./listofwords.txt');
+    const response = await fetch(`${import.meta.env.BASE_URL}listofwords.txt`);
     const text = await response.text();
     VALID_WORDS = new Set(
       text.split('\n')
           .map(word => word.trim().toUpperCase())
           .filter(word => word.length >= 3 && word.length <= 8)
     );
-    console.log(`Loaded ${VALID_WORDS.size} words from dictionary`);
   } catch (error) {
     console.error('Error loading words:', error);
   }
