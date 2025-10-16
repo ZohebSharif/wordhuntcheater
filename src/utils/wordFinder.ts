@@ -4,13 +4,22 @@ let VALID_WORDS: Set<string> = new Set();
 // Load words from file
 const loadWords = async () => {
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}listofwords.txt`);
+    // Get the base path - works for both local and GitHub Pages
+    const basePath = window.location.pathname.replace(/\/$/, '');
+    const wordListUrl = `${window.location.origin}${basePath}/listofwords.txt`;
+    console.log('Attempting to load words from:', wordListUrl);
+    
+    const response = await fetch(wordListUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const text = await response.text();
     VALID_WORDS = new Set(
       text.split('\n')
           .map(word => word.trim().toUpperCase())
           .filter(word => word.length >= 3 && word.length <= 8)
     );
+    console.log(`Successfully loaded ${VALID_WORDS.size} words`);
   } catch (error) {
     console.error('Error loading words:', error);
   }
