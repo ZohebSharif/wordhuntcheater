@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 20% 98%;
+    --foreground: 240 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 15%;
+
+    --primary: 240 50% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 10% 96%;
+    --muted-foreground: 240 5% 45%;
+
+    --accent: 265 70% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 240 10% 90%;
+    --input: 240 10% 92%;
+    --ring: 265 70% 60%;
+
+    --radius: 0.75rem;
+    
+    --gradient-subtle: linear-gradient(135deg, 240 20% 98%, 260 30% 97%);
+    --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px -4px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-background via-muted to-background text-foreground font-['Inter',sans-serif] antialiased;
+  }
+}
+
+@layer utilities {
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.4s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
