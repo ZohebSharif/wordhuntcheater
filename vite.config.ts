@@ -4,8 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: './',
+export default defineConfig(({ mode }) => ({
+  base: '/wordhuntcheater/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -20,4 +20,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-});
+}));
